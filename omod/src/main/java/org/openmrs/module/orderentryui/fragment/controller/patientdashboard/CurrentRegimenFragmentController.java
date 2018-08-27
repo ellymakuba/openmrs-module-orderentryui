@@ -17,12 +17,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ActiveDrugOrdersFragmentController {
+public class CurrentRegimenFragmentController {
 
     public void controller(FragmentConfiguration config,
                            @SpringBean("patientService") PatientService patientService,
                            @SpringBean("orderService") OrderService orderService,
-                           FragmentModel model) throws Exception {
+                           FragmentModel model,
+                           UiUtils ui) throws Exception {
         // unfortunately in OpenMRS 2.1 the coreapps patient page only gives us a patientId for this extension point
         // (not a patient) but I assume we'll fix this to pass patient, so I'll code defensively
         config.require("patient|patientId");
@@ -39,8 +40,19 @@ public class ActiveDrugOrdersFragmentController {
         OrderType drugOrders = orderService.getOrderTypeByUuid(OrderType.DRUG_ORDER_TYPE_UUID);
         List<Order> activeDrugOrders = orderService.getActiveOrders(patient, drugOrders, null, null);
 
-        model.addAttribute("patient", patient);
-        model.addAttribute("activeDrugOrders", activeDrugOrders);
+        JSONArray patientOrdersArray=new JSONArray();
+        JSONObject patientOrdersResponse=new JSONObject();
+        /*for(Order order:activeDrugOrders){
+            DrugOrder drugOrder=(DrugOrder)order;
+            JSONObject patientOrder=new JSONObject();
+            patientOrder.put("groupId",(order.getOrderGroup() !=null) ? order.getOrderGroup().getId():null);
+            patientOrder.put("drugId", drugOrder.getDrug().getId());
+            patientOrder.put("drugName", drugOrder.getDrug().getName());
+            patientOrder.put("dose", drugOrder.getFrequency());
+            patientOrdersArray.add(patientOrder);
+        }
+        patientOrdersResponse.put("response",patientOrdersArray);*/
+        model.put("patientOrdersResponse", patientOrdersResponse.toString());
 
     }
 
