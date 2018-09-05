@@ -107,6 +107,22 @@ angular.module('drugOrders', ['orderService', 'encounterService', 'uicommons.fil
                                                 "name": "3rd + 3TC + NVPP (300mg OD/150mg BD/200mg BD)"
                                               }
                                             ]
+                                          },
+                                          {
+                                            "name": "Peds first line",
+                                            "regimens": [
+                                              {
+                                                "name": "3rd + 3TC + NVPP (300mg OD/150mg BD/200mg BD)"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "Peds second line",
+                                            "regimens": [
+                                              {
+                                                "name": "3rd + 3TC + NVPP (300mg OD/150mg BD/200mg BD)"
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
@@ -122,6 +138,7 @@ angular.module('drugOrders', ['orderService', 'encounterService', 'uicommons.fil
                                     ]
                                   }
                     $scope.regimenLines=$scope.programs.programs[0].regimen_lines;
+                    $scope.orderSetSectionClass="hide-section";
                 });
 
                 $scope.pastDrugOrders = { loading: true };
@@ -286,17 +303,17 @@ angular.module('drugOrders', ['orderService', 'encounterService', 'uicommons.fil
             $scope.setProgramRegimens=function(regimens){
             $scope.activeRegimens=[];
              $scope.activeRegimens=regimens;
-             console.log("regimens ++++"+JSON.stringify(regimens));
+             $scope.orderSetSectionClass="hide-section";
             }
             $scope.setRegimenOrderSet=function(set){
               $scope.regimenOrderSet=[];
               $scope.regimenOrderSet=set;
+              $scope.orderSetSectionClass="show-section";
             }
             $scope.setRegimenLines=function(regimenLine){
               $scope.regimenLines=[];
               $scope.activeRegimens=[];
               $scope.regimenLines=regimenLine;
-              console.log("regimen lines ++++"+JSON.stringify(regimenLine));
+              $scope.orderSetSectionClass="hide-section";
             }
-
         }]);

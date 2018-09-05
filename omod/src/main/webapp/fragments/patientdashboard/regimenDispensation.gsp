@@ -23,6 +23,7 @@ jq(document).ready(function(){
 jq(document).on("click", ".regimen-item", function() {
 jq("li.regimen-item").removeClass("active");
 jq(this).addClass("active");
+jq(".hide-section").removeClass("hide-section");
 selectedRegComponents ="";
     jq("#saveButton").hide();
     jq("#cancelButton").hide();
@@ -195,16 +196,16 @@ jq(function() {
       ng-click="setProgramRegimens(regimen_line.regimens)">{{regimen_line.name}}</li>
       </ul>
   </div>
-  <div ng-show="activeRegimens.length > 0" style="border-style:solid;border-color:gray;padding:10px;margin-top: 20px;">
-  <h3 style="margin-top: 30px;">Regimens</h3>
+  <div ng-show="activeRegimens.length > 0" style="border-style:solid;border-color:gray;padding:10px;margin-top:10px;">
+  <h3 style="margin-top:5px;">Regimens</h3>
       <ul class="list-group" style="display:inline;">
       <li class="button regimen-item" ng-repeat="regimen in activeRegimens" style="margin:2px;">
       {{regimen.name}}
       </li>
       </ul>
-  </div>
-  <div ng-show="activeRegimens.length > 0" style="border-style:solid;border-color:gray;padding:10px;margin-top: 20px;">
-  <h3 style="margin-top: 30px;">Drug Order Sets</h3>
+  </div> 
+  <div ng-class="orderSetSectionClass" style="border-style:solid;border-color:gray;padding:10px;margin-top:10px;">
+  <h3 style="margin-top:5px;">Drug Order Sets</h3>
   <div class="box-body" id="share" style="padding-top: 10px"></div>
   <div style="padding-top: 10px">
       <button id="saveButton" ><img src="${ ui.resourceLink("kenyaui", "images/glyphs/ok.png") }" /> Save</button>
