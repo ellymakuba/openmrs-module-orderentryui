@@ -116,7 +116,7 @@ jq.getJSON('${ ui.actionLink("orderentryui", "patientdashboard/regimenDispensati
   Drug: <input ng-model="component.name" readonly="">
   Dose:<input ng-model="component.dose" size="5">
   Units:<select ng-model="component.units">
-   <option ng-repeat="unit in doseUnits" value="{{unit.uuid}}">{{unit.display}}</option>
+   <option ng-repeat="unit in doseUnits" ng-selected="component.units_uuid==unit.uuid" value="{{unit.uuid}}">{{unit.display}}</option>
    </select>
   Frequency:<select ng-model="component.frequency">
    <option ng-repeat="freq in frequencies" value="{{freq.uuid}}">{{freq.display}}</option>

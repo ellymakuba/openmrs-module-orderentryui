@@ -79,10 +79,6 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
     window.sessionContext = {'locale':'en_GB'}
     window.OpenMRS.activeOrdersPayload=${activeOrdersResponse};
 </script>
-
-
-
-
 <div class="ke-page-content">
 <div id="drug-orders-app" ng-controller="DrugOrdersCtrl" ng-init='init()'>
    <div class="ui-tabs">
@@ -215,7 +211,7 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
                            <th width="50%">Instructions</th>
                            <th width="20%">Action</th>
                         </tr>
-                        <tr ng-repeat="order in patientActiveDrugOrders.order_groups">
+                        <tr ng-repeat="order in patientActiveDrugOrders.order_groups" style="font-size:16px;">
                            <td ng-class="{ 'will-replace': replacementFor(order) }">
                               {{ order.date }}
                            </td>
@@ -260,7 +256,7 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
                   </div>
                </div>
             </div>
-            <div class="ke-tab" data-tabid="past_drug_orders">
+            <div class="ke-tab" data-tabid="past_drug_orders" style="font-size:16px;">
                <div class = "card">
                   <div class = "card-header">
                      <h4 class = "card-title">
@@ -295,10 +291,6 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
       </div>
    </div>
 </div>
-
-
-
-
 <script type="text/javascript">
     // manually bootstrap angular app, in case there are multiple angular apps on a page
     angular.bootstrap('#drug-orders-app', ['drugOrders']);
