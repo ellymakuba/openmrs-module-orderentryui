@@ -106,7 +106,6 @@ angular.module('drugOrders', ['orderService', 'encounterService', 'uicommons.fil
             }
 
             $scope.loading = false;
-
             $scope.activeDrugOrders = { loading: true };
             $scope.pastDrugOrders = { loading: true };
             $scope.draftDrugOrders = [];

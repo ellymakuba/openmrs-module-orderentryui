@@ -94,14 +94,17 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
          <h3>Drug Orders</h3>
          <div id="program-tabs" class="ke-tabs">
             <div class="ke-tabmenu">
-               <div class="ke-tabmenu-item" data-tabid="active_drug_orders">Active Orders</div>
-               <div class="ke-tabmenu-item" data-tabid="new_drug_orders">Create New Order</div>
-               <div class="ke-tabmenu-item" data-tabid="past_drug_orders">Past Drug Orders</div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#active_drug_orders" data-toggle="tab">Active Orders</a></li>
+                <li><a href="#new_drug_orders" data-toggle="tab">Create New Order</a></li>
+                <li><a href="#past_drug_orders" data-toggle="tab">Past Drug Orders</a></li>
+            </ul>
             </div>
-            <div class="ke-tab" data-tabid="new_drug_orders" style="padding-top:45px">
+            <div class="tab-content">
+            <div class="tab-pane active" id="new_drug_orders" id="new_drug_orders">
                <div class="card">
-                  <div class = "card-header">
-                     <h4 class = "card-title">
+                  <div class = "card-header" >
+                     <h4 class = "card-title" >
                         Create New Drug Orders
                      </h4>
                   </div>
@@ -196,7 +199,7 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
                   </div>
                </div>
             </div>
-            <div class="ke-tab" data-tabid="active_drug_orders">
+            <div class="tab-pane" id="active_drug_orders">
                <div class = "card">
                   <div class = "card-header">
                      <h4 class = "card-title">
@@ -219,7 +222,7 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
                               {{ order.name}}
                            </td>
                            <td>
-                              <button ng-click="editOrderGroup(order)" id="editOrder">Edit</button>
+                              <button ng-click="editOrderGroup(order)" class="edit-order">Edit</button>
                               <button ng-click="dispenseOrderGroup(order)" class="dispenseOrder">Dispense</button>
                            </td>
                         </tr>
@@ -256,7 +259,7 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
                   </div>
                </div>
             </div>
-            <div class="ke-tab" data-tabid="past_drug_orders" style="font-size:16px;">
+            <div class="tab-pane" id="past_drug_orders" style="font-size:16px;">
                <div class = "card">
                   <div class = "card-header">
                      <h4 class = "card-title">
@@ -286,6 +289,7 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
                      </table>
                   </div>
                </div>
+            </div>
             </div>
          </div>
       </div>
